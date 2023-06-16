@@ -1,0 +1,1 @@
+# sdcore-cos-configuration
