@@ -1,0 +1,19 @@
+name: Main branch CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+#    branches:
+#      - main
+
+jobs:
+  lint-report:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        run: |
+          go install github.com/grafana/dashboard-linter@latest
+          ./dashboard-linter lint grafana_dashboards/sdcore/5g_network.json

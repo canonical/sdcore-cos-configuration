@@ -24,7 +24,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 3,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -33,7 +32,7 @@
         "type": "prometheus",
         "uid": "${prometheusds}"
       },
-      "description": "",
+      "description": "5G Active PDU Sessions",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -50,7 +49,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "none"
         },
         "overrides": []
       },
@@ -98,6 +98,7 @@
         "type": "prometheus",
         "uid": "${prometheusds}"
       },
+      "description": "UPF Status",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -130,7 +131,8 @@
                 "value": 1
               }
             ]
-          }
+          },
+          "unit": "none"
         },
         "overrides": []
       },
@@ -178,6 +180,7 @@
         "type": "prometheus",
         "uid": "${prometheusds}"
       },
+      "description": "5G Core subscribers",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -216,7 +219,8 @@
                 "value": 90
               }
             ]
-          }
+          },
+          "unit": "string"
         },
         "overrides": [
           {
@@ -329,6 +333,7 @@
         "type": "prometheus",
         "uid": "${prometheusds}"
       },
+      "description": "UPF Throughput",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -337,6 +342,7 @@
           "custom": {
             "axisCenteredZero": false,
             "axisColorMode": "text",
+            "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
@@ -437,16 +443,53 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "hide": 0,
+        "includeAll": true,
+        "label": "Loki data source",
+        "multi": true,
+        "name": "loki_datasource",
+        "options": [],
+        "query": "loki",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "hide": 0,
+        "includeAll": true,
+        "label": "Prometheus data source",
+        "multi": true,
+        "name": "prometheus_datasource",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      }
+    ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "5G Dashboard",
   "uid": "XpijtYd4z",
-  "version": 15,
+  "version": 1,
   "weekStart": ""
 }
