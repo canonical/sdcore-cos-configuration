@@ -5,8 +5,8 @@ on:
     branches:
       - main
   push:
-#    branches:
-#      - main
+    branches:
+      - main
 
 jobs:
   lint-report:
@@ -17,4 +17,4 @@ jobs:
       - name: Grafana Dashboard Lint
         run: |
           go install github.com/grafana/dashboard-linter@latest
-          ./dashboard-linter lint grafana_dashboards/sdcore/5g_network.json
+          dashboard-linter lint grafana_dashboards/sdcore/5g_network.json
