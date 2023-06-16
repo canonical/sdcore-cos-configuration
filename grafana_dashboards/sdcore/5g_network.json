@@ -30,7 +30,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheusds}"
+        "uid": "${prometheus_datasource}"
       },
       "description": "5G Active PDU Sessions",
       "fieldConfig": {
@@ -81,7 +81,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheusds}"
+            "uid": "${prometheus_datasource}"
           },
           "editorMode": "code",
           "expr": "smf_pdu_sessions",
@@ -96,7 +96,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheusds}"
+        "uid": "${prometheus_datasource}"
       },
       "description": "UPF Status",
       "fieldConfig": {
@@ -163,7 +163,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheusds}"
+            "uid": "${prometheus_datasource}"
           },
           "editorMode": "builder",
           "expr": "up{juju_charm=\"sdcore-upf\"}",
@@ -178,7 +178,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheusds}"
+        "uid": "${prometheus_datasource}"
       },
       "description": "5G Core subscribers",
       "fieldConfig": {
@@ -272,7 +272,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheusds}"
+            "uid": "${prometheus_datasource}"
           },
           "editorMode": "code",
           "expr": "smf_pdu_session_profile",
@@ -331,7 +331,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheusds}"
+        "uid": "${prometheus_datasource}"
       },
       "description": "UPF Throughput",
       "fieldConfig": {
@@ -413,7 +413,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheusds}"
+            "uid": "${prometheus_datasource}"
           },
           "editorMode": "code",
           "expr": "sum(8 * irate(upf_bytes_count{dir=\"tx\",iface=\"Core\"}[2m]))",
@@ -424,7 +424,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheusds}"
+            "uid": "${prometheus_datasource}"
           },
           "editorMode": "code",
           "expr": "sum(8 * irate(upf_bytes_count{dir=\"tx\",iface=\"Access\"}[2m]))",
@@ -450,7 +450,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "hide": 0,
+        "hide": 1,
         "includeAll": true,
         "label": "Loki data source",
         "multi": true,
@@ -468,7 +468,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "hide": 0,
+        "hide": 1,
         "includeAll": true,
         "label": "Prometheus data source",
         "multi": true,
