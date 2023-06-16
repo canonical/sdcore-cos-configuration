@@ -14,6 +14,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Grafana Dashboard Lint
         run: |
           go install github.com/grafana/dashboard-linter@latest
           ./dashboard-linter lint grafana_dashboards/sdcore/5g_network.json
