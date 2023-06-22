@@ -118,13 +118,28 @@
             {
               "options": {
                 "0": {
+                  "color": "red",
+                  "index": 1,
                   "text": "Down"
                 },
                 "1": {
+                  "color": "green",
+                  "index": 0,
                   "text": "Up"
                 }
               },
               "type": "value"
+            },
+            {
+              "options": {
+                "match": "null+nan",
+                "result": {
+                  "color": "red",
+                  "index": 2,
+                  "text": "Down"
+                }
+              },
+              "type": "special"
             }
           ],
           "max": 1,
