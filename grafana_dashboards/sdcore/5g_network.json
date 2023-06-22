@@ -91,6 +91,16 @@
         }
       ],
       "title": "5G Active PDU Sessions",
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {
+            "reducers": [
+              "last"
+            ]
+          }
+        }
+      ],
       "type": "stat"
     },
     {
@@ -246,6 +256,18 @@
                 "value": 144
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "IP Address (last)"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 167
+              }
+            ]
           }
         ]
       },
@@ -322,6 +344,29 @@
               "instance": "",
               "ip": "IP Address",
               "state": "Status"
+            }
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "IMSI": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "IP Address": {
+                "aggregations": [
+                  "last"
+                ],
+                "operation": "aggregate"
+              },
+              "Status": {
+                "aggregations": [
+                  "last"
+                ],
+                "operation": "aggregate"
+              }
             }
           }
         }
