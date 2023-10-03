@@ -548,9 +548,13 @@
         },
         "hide": 1,
         "includeAll": true,
-        "label": "Juju model",
+        "label": "Juju Model",
         "multi": true,
         "name": "juju_model",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "P3443FC48761FE741"
+        },
         "options": [],
         "query": "label_values(up, juju_model)",
         "refresh": 1,
