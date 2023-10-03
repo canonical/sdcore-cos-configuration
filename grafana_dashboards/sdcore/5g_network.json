@@ -191,7 +191,7 @@
             "uid": "${prometheus_datasource}"
           },
           "editorMode": "builder",
-          "expr": "up{juju_charm=\"sdcore-upf\"}",
+          "expr": "up{juju_charm=\"sdcore-upf\",juju_model=$juju_model}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
