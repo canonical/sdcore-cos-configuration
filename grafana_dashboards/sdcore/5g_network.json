@@ -725,28 +725,6 @@
         "regex": "",
         "skipUrlSync": false,
         "type": "datasource"
-      },
-      {
-        "current": {
-          "selected": true,
-          "text": "All",
-          "value": "$__all"
-        },
-        "hide": 1,
-        "includeAll": true,
-        "label": "Juju Model",
-        "multi": true,
-        "name": "juju_model",
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus_datasource}"
-        },
-        "options": [],
-        "query": "label_values(up, juju_model)",
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "type": "query"
       }
     ]
   },
