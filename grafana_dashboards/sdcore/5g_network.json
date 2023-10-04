@@ -28,91 +28,10 @@
   "liveNow": false,
   "panels": [
     {
-      "id": 4,
-      "title": "5G Active PDU Sessions",
-      "description": "5G Active PDU Sessions",
-      "type": "stat",
       "datasource": {
         "type": "prometheus",
         "uid": "${prometheus_datasource}"
       },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "max": 100,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "super-light-blue",
-                "value": null
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${prometheus_datasource}"
-          },
-          "editorMode": "code",
-          "expr": "smf_pdu_sessions",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "transformations": [
-        {
-          "id": "reduce",
-          "options": {
-            "reducers": [
-              "last"
-            ]
-          }
-        }
-      ],
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 4,
-        "x": 0,
-        "y": 0
-      },
-      "pluginVersion": "9.2.1"
-    },
-    {
-      "id": 2,
-      "title": "UPF Status",
-      "description": "UPF Status",
-      "type": "table",
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus_datasource}"
-      },
-      "maxDataPoints": 1,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -165,6 +84,26 @@
           }
         ]
       },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "maxDataPoints": 1,
+      "options": {
+        "footer": {
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "9.2.1",
       "targets": [
         {
           "datasource": {
@@ -181,6 +120,7 @@
           "refId": "A"
         }
       ],
+      "title": "UPF Status",
       "transformations": [
         {
           "id": "labelsToFields",
@@ -236,34 +176,14 @@
           }
         }
       ],
-      "options": {
-        "footer": {
-          "enablePagination": true,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": true
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 0
-      },
-      "pluginVersion": "9.2.1"
+      "type": "table"
     },
     {
-      "id": 14,
-      "title": "5G Core subscribers",
-      "description": "5G Core subscribers",
-      "type": "table",
       "datasource": {
         "type": "prometheus",
         "uid": "${prometheus_datasource}"
       },
+      "description": "5G Core subscribers",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -344,19 +264,39 @@
           }
         ]
       },
+      "gridPos": {
+        "h": 8,
+        "w": 7,
+        "x": 8,
+        "y": 0
+      },
+      "id": 14,
+      "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "9.2.1",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${prometheus_datasource}"
           },
-          "editorMode": "code",
+          "editorMode": "builder",
           "expr": "smf_pdu_session_profile",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
+      "title": "5G Core subscribers",
       "transformations": [
         {
           "id": "labelsToFields",
@@ -424,34 +364,90 @@
           }
         }
       ],
-      "options": {
-        "footer": {
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": true,
-        "sortBy": []
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 7,
-        "x": 7,
-        "y": 0
-      },
-      "pluginVersion": "9.2.1"
+      "type": "table"
     },
     {
-      "id": 12,
-      "title": "UPF Throughput",
-      "description": "UPF Throughput",
-      "type": "timeseries",
       "datasource": {
         "type": "prometheus",
         "uid": "${prometheus_datasource}"
       },
+      "description": "5G Active PDU Sessions",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "super-light-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 3,
+        "x": 15,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.2.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${prometheus_datasource}"
+          },
+          "editorMode": "builder",
+          "expr": "smf_pdu_sessions",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "5G Active PDU Sessions",
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {
+            "reducers": [
+              "last"
+            ]
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${prometheus_datasource}"
+      },
+      "description": "UPF Upstream Throughput",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -464,10 +460,9 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 10,
+            "fillOpacity": 0,
             "gradientMode": "none",
             "hideFrom": {
-              "graph": false,
               "legend": false,
               "tooltip": false,
               "viz": false
@@ -478,8 +473,8 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "never",
-            "spanNulls": true,
+            "showPoints": "auto",
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -504,35 +499,42 @@
           },
           "unit": "bps"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "upf",
+                  "upf2"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
       },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${prometheus_datasource}"
-          },
-          "editorMode": "code",
-          "expr": "sum(8 * irate(upf_bytes_count{dir=\"tx\",iface=\"Core\"}[2m]))",
-          "legendFormat": "Upstream",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${prometheus_datasource}"
-          },
-          "editorMode": "code",
-          "expr": "sum(8 * irate(upf_bytes_count{dir=\"tx\",iface=\"Access\"}[2m]))",
-          "hide": false,
-          "legendFormat": "Downstream",
-          "range": true,
-          "refId": "B"
-        }
-      ],
+      "gridPos": {
+        "h": 7,
+        "w": 18,
+        "x": 0,
+        "y": 8
+      },
+      "id": 6,
       "options": {
-        "graph": {},
         "legend": {
           "calcs": [],
           "displayMode": "list",
@@ -544,13 +546,142 @@
           "sort": "none"
         }
       },
-      "gridPos": {
-        "h": 9,
-        "w": 14,
-        "x": 0,
-        "y": 9
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${prometheus_datasource}"
+          },
+          "editorMode": "code",
+          "expr": "8 * irate(upf_bytes_count{dir=\"tx\",iface=\"Core\"}[2m])",
+          "legendFormat": "{{juju_application}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "UPF Upstream Throughput",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${prometheus_datasource}"
       },
-      "pluginVersion": "7.5.11"
+      "description": "UPF Downstream Throughput",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "upf",
+                  "upf2"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 18,
+        "x": 0,
+        "y": 15
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${prometheus_datasource}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "8 * irate(upf_bytes_count{dir=\"tx\",iface=\"Access\"}[2m])",
+          "legendFormat": "{{juju_application}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "UPF Downstream Throughput",
+      "type": "timeseries"
     }
   ],
   "refresh": "5s",
@@ -608,7 +739,7 @@
         "name": "juju_model",
         "datasource": {
           "type": "prometheus",
-          "uid": "P3443FC48761FE741"
+          "uid": "${prometheus_datasource}"
         },
         "options": [],
         "query": "label_values(up, juju_model)",
