@@ -28,11 +28,14 @@
   "liveNow": false,
   "panels": [
     {
+      "id": 4,
+      "title": "5G Active PDU Sessions",
+      "description": "5G Active PDU Sessions",
+      "type": "stat",
       "datasource": {
         "type": "prometheus",
         "uid": "${prometheus_datasource}"
       },
-      "description": "5G Active PDU Sessions",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -54,13 +57,29 @@
         },
         "overrides": []
       },
-      "gridPos": {
-        "h": 9,
-        "w": 4,
-        "x": 0,
-        "y": 0
-      },
-      "id": 4,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${prometheus_datasource}"
+          },
+          "editorMode": "code",
+          "expr": "smf_pdu_sessions",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {
+            "reducers": [
+              "last"
+            ]
+          }
+        }
+      ],
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -76,40 +95,24 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.1",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${prometheus_datasource}"
-          },
-          "editorMode": "code",
-          "expr": "smf_pdu_sessions",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "5G Active PDU Sessions",
-      "transformations": [
-        {
-          "id": "reduce",
-          "options": {
-            "reducers": [
-              "last"
-            ]
-          }
-        }
-      ],
-      "type": "stat"
+      "gridPos": {
+        "h": 9,
+        "w": 4,
+        "x": 0,
+        "y": 0
+      },
+      "pluginVersion": "9.2.1"
     },
     {
       "id": 2,
       "title": "UPF Status",
+      "description": "UPF Status",
+      "type": "table",
       "datasource": {
         "type": "prometheus",
         "uid": "${prometheus_datasource}"
       },
+      "maxDataPoints": 1,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -143,34 +146,25 @@
               {
                 "color": "dark-red",
                 "value": null
-              },
-              {
-                "color": "dark-green",
-                "value": 1
               }
             ]
           }
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Status (last)"
+            },
+            "properties": [
+              {
+                "id": "custom.displayMode",
+                "value": "color-text"
+              }
+            ]
+          }
+        ]
       },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 0
-      },
-      "options": {
-        "footer": {
-          "enablePagination": true,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": true
-      },
-      "pluginVersion": "9.2.1",
       "targets": [
         {
           "datasource": {
@@ -178,9 +172,12 @@
             "uid": "${prometheus_datasource}"
           },
           "editorMode": "builder",
+          "exemplar": false,
           "expr": "up{juju_charm=\"sdcore-upf\"}",
+          "format": "time_series",
+          "instant": true,
           "legendFormat": "__auto",
-          "range": true,
+          "range": false,
           "refId": "A"
         }
       ],
@@ -189,20 +186,11 @@
           "id": "labelsToFields",
           "options": {
             "keepLabels": [
-              "juju_charm",
-              "juju_model"
+              "juju_model",
+              "juju_application"
             ],
+            "mode": "columns",
             "valueLabel": "__name__"
-          }
-        },
-        {
-          "id": "reduce",
-          "options": {
-            "includeTimeField": false,
-            "mode": "reduceFields",
-            "reducers": [
-              "lastNotNull"
-            ]
           }
         },
         {
@@ -216,6 +204,7 @@
             "indexByName": {},
             "renameByName": {
               "Value": "Status",
+              "juju_application": "UPF Name",
               "juju_charm": "UPF Name",
               "juju_model": "Juju Model Name"
             }
@@ -231,11 +220,15 @@
               },
               "Status": {
                 "aggregations": [
-                  "lastNotNull"
+                  "last"
                 ],
                 "operation": "aggregate"
               },
               "UPF Name": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "juju_application": {
                 "aggregations": [],
                 "operation": "groupby"
               }
@@ -243,7 +236,24 @@
           }
         }
       ],
-      "type": "table"
+      "options": {
+        "footer": {
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "pluginVersion": "9.2.1"
     },
     {
       "id": 14,
@@ -434,11 +444,14 @@
       "pluginVersion": "9.2.1"
     },
     {
+      "id": 12,
+      "title": "UPF Throughput",
+      "description": "UPF Throughput",
+      "type": "timeseries",
       "datasource": {
         "type": "prometheus",
         "uid": "${prometheus_datasource}"
       },
-      "description": "UPF Throughput",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -493,27 +506,6 @@
         },
         "overrides": []
       },
-      "gridPos": {
-        "h": 9,
-        "w": 14,
-        "x": 0,
-        "y": 9
-      },
-      "id": 12,
-      "options": {
-        "graph": {},
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "7.5.11",
       "targets": [
         {
           "datasource": {
@@ -539,8 +531,26 @@
           "refId": "B"
         }
       ],
-      "title": "UPF Throughput",
-      "type": "timeseries"
+      "options": {
+        "graph": {},
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 14,
+        "x": 0,
+        "y": 9
+      },
+      "pluginVersion": "7.5.11"
     }
   ],
   "refresh": "5s",
