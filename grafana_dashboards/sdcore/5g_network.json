@@ -1,4 +1,5 @@
 {
+  "title": "5G Network Overview",
   "annotations": {
     "list": [
       {
@@ -28,6 +29,11 @@
   "liveNow": false,
   "panels": [
     {
+      "id": 2,
+      "title": "UPF Status",
+      "description": "UPF Status",
+      "type": "table",
+      "maxDataPoints": 1,
       "datasource": {
         "type": "prometheus",
         "uid": "${prometheus_datasource}"
@@ -84,26 +90,6 @@
           }
         ]
       },
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 0,
-        "y": 0
-      },
-      "id": 2,
-      "maxDataPoints": 1,
-      "options": {
-        "footer": {
-          "enablePagination": true,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": true
-      },
-      "pluginVersion": "9.2.1",
       "targets": [
         {
           "datasource": {
@@ -120,7 +106,6 @@
           "refId": "A"
         }
       ],
-      "title": "UPF Status",
       "transformations": [
         {
           "id": "labelsToFields",
@@ -176,14 +161,34 @@
           }
         }
       ],
-      "type": "table"
+      "options": {
+        "footer": {
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 0
+      },
+      "pluginVersion": "9.2.1"
     },
     {
+      "id": 14,
+      "title": "5G Core subscribers",
+      "description": "5G Core subscribers",
+      "type": "table",
       "datasource": {
         "type": "prometheus",
         "uid": "${prometheus_datasource}"
       },
-      "description": "5G Core subscribers",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -264,25 +269,6 @@
           }
         ]
       },
-      "gridPos": {
-        "h": 8,
-        "w": 7,
-        "x": 8,
-        "y": 0
-      },
-      "id": 14,
-      "options": {
-        "footer": {
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": true,
-        "sortBy": []
-      },
-      "pluginVersion": "9.2.1",
       "targets": [
         {
           "datasource": {
@@ -296,7 +282,6 @@
           "refId": "A"
         }
       ],
-      "title": "5G Core subscribers",
       "transformations": [
         {
           "id": "labelsToFields",
@@ -364,14 +349,34 @@
           }
         }
       ],
-      "type": "table"
+      "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 7,
+        "x": 8,
+        "y": 0
+      },
+      "pluginVersion": "9.2.1"
     },
     {
+      "id": 4,
+      "title": "5G Active PDU Sessions",
+      "description": "5G Active PDU Sessions",
+      "type": "stat",
       "datasource": {
         "type": "prometheus",
         "uid": "${prometheus_datasource}"
       },
-      "description": "5G Active PDU Sessions",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -393,13 +398,29 @@
         },
         "overrides": []
       },
-      "gridPos": {
-        "h": 8,
-        "w": 3,
-        "x": 15,
-        "y": 0
-      },
-      "id": 4,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${prometheus_datasource}"
+          },
+          "editorMode": "builder",
+          "expr": "smf_pdu_sessions",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {
+            "reducers": [
+              "last"
+            ]
+          }
+        }
+      ],
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -415,39 +436,23 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.1",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${prometheus_datasource}"
-          },
-          "editorMode": "builder",
-          "expr": "smf_pdu_sessions",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "5G Active PDU Sessions",
-      "transformations": [
-        {
-          "id": "reduce",
-          "options": {
-            "reducers": [
-              "last"
-            ]
-          }
-        }
-      ],
-      "type": "stat"
+      "gridPos": {
+        "h": 7,
+        "w": 3,
+        "x": 15,
+        "y": 0
+      },
+      "pluginVersion": "9.2.1"
     },
     {
+      "id": 6,
+      "title": "UPF Upstream Throughput",
+      "description": "UPF Upstream Throughput",
+      "type": "timeseries",
       "datasource": {
         "type": "prometheus",
         "uid": "${prometheus_datasource}"
       },
-      "description": "UPF Upstream Throughput",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -527,13 +532,6 @@
           }
         ]
       },
-      "gridPos": {
-        "h": 7,
-        "w": 18,
-        "x": 0,
-        "y": 8
-      },
-      "id": 6,
       "options": {
         "legend": {
           "calcs": [],
@@ -559,15 +557,22 @@
           "refId": "A"
         }
       ],
-      "title": "UPF Upstream Throughput",
-      "type": "timeseries"
+      "gridPos": {
+        "h": 7,
+        "w": 18,
+        "x": 0,
+        "y": 8
+      }
     },
     {
+      "id": 4,
+      "title": "UPF Downstream Throughput",
+      "description": "UPF Downstream Throughput",
+      "type": "timeseries",
       "datasource": {
         "type": "prometheus",
         "uid": "${prometheus_datasource}"
       },
-      "description": "UPF Downstream Throughput",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -653,7 +658,6 @@
         "x": 0,
         "y": 15
       },
-      "id": 4,
       "options": {
         "legend": {
           "calcs": [],
@@ -679,9 +683,7 @@
           "range": true,
           "refId": "A"
         }
-      ],
-      "title": "UPF Downstream Throughput",
-      "type": "timeseries"
+      ]
     }
   ],
   "refresh": "5s",
@@ -734,7 +736,6 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "5G Network Overview",
   "uid": "XpijtYd4z",
   "version": 1,
   "weekStart": ""
