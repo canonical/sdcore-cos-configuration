@@ -191,7 +191,7 @@
             "uid": "${prometheus_datasource}"
           },
           "editorMode": "builder",
-          "expr": "up{juju_charm=\"sdcore-upf\",juju_model=$juju_model}",
+          "expr": "up{juju_charm=\"sdcore-upf\",juju_model=\"$juju_model\"}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -201,11 +201,14 @@
       "type": "stat"
     },
     {
+      "id": 14,
+      "title": "5G Core subscribers",
+      "description": "5G Core subscribers",
+      "type": "table",
       "datasource": {
         "type": "prometheus",
         "uid": "${prometheus_datasource}"
       },
-      "description": "5G Core subscribers",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -286,25 +289,6 @@
           }
         ]
       },
-      "gridPos": {
-        "h": 9,
-        "w": 7,
-        "x": 7,
-        "y": 0
-      },
-      "id": 14,
-      "options": {
-        "footer": {
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": true,
-        "sortBy": []
-      },
-      "pluginVersion": "9.2.1",
       "targets": [
         {
           "datasource": {
@@ -318,7 +302,6 @@
           "refId": "A"
         }
       ],
-      "title": "5G Core subscribers",
       "transformations": [
         {
           "id": "labelsToFields",
@@ -386,7 +369,24 @@
           }
         }
       ],
-      "type": "table"
+      "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 7,
+        "x": 7,
+        "y": 0
+      },
+      "pluginVersion": "9.2.1"
     },
     {
       "datasource": {
