@@ -104,84 +104,71 @@
       "type": "stat"
     },
     {
+      "id": 2,
+      "title": "UPF Status",
       "datasource": {
         "type": "prometheus",
         "uid": "${prometheus_datasource}"
       },
-      "description": "UPF Status",
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "inspect": false
+          },
           "mappings": [
             {
               "options": {
                 "0": {
-                  "color": "red",
+                  "color": "dark-red",
                   "index": 1,
-                  "text": "Down"
+                  "text": "DOWN"
                 },
                 "1": {
-                  "color": "green",
+                  "color": "dark-green",
                   "index": 0,
-                  "text": "Up"
+                  "text": "UP"
                 }
               },
               "type": "value"
-            },
-            {
-              "options": {
-                "match": "null+nan",
-                "result": {
-                  "color": "red",
-                  "index": 2,
-                  "text": "Down"
-                }
-              },
-              "type": "special"
             }
           ],
-          "max": 1,
-          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "red",
+                "color": "dark-red",
                 "value": null
               },
               {
-                "color": "green",
+                "color": "dark-green",
                 "value": 1
               }
             ]
-          },
-          "unit": "none"
+          }
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
-        "w": 3,
-        "x": 4,
+        "h": 8,
+        "w": 12,
+        "x": 0,
         "y": 0
       },
-      "id": 2,
       "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "center",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+        "footer": {
+          "enablePagination": true,
           "fields": "",
-          "values": false
+          "reducer": [
+            "sum"
+          ],
+          "show": false
         },
-        "text": {},
-        "textMode": "value"
+        "showHeader": true
       },
       "pluginVersion": "9.2.1",
       "targets": [
@@ -191,14 +178,72 @@
             "uid": "${prometheus_datasource}"
           },
           "editorMode": "builder",
-          "expr": "up{juju_charm=\"sdcore-upf\",juju_model=\"$juju_model\"}",
+          "expr": "up{juju_charm=\"sdcore-upf\"}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "UPF Status",
-      "type": "stat"
+      "transformations": [
+        {
+          "id": "labelsToFields",
+          "options": {
+            "keepLabels": [
+              "juju_charm",
+              "juju_model"
+            ],
+            "valueLabel": "__name__"
+          }
+        },
+        {
+          "id": "reduce",
+          "options": {
+            "includeTimeField": false,
+            "mode": "reduceFields",
+            "reducers": [
+              "lastNotNull"
+            ]
+          }
+        },
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Value": "Status",
+              "juju_charm": "UPF Name",
+              "juju_model": "Juju Model Name"
+            }
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Juju Model Name": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Status": {
+                "aggregations": [
+                  "lastNotNull"
+                ],
+                "operation": "aggregate"
+              },
+              "UPF Name": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        }
+      ],
+      "type": "table"
     },
     {
       "id": 14,
