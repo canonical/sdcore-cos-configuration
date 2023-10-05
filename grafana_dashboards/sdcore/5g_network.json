@@ -446,8 +446,8 @@
     },
     {
       "id": 6,
-      "title": "UPF Upstream Throughput",
-      "description": "UPF Upstream Throughput",
+      "title": "UPF Uplink Throughput",
+      "description": "UPF Uplink Throughput",
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
@@ -566,8 +566,8 @@
     },
     {
       "id": 4,
-      "title": "UPF Downstream Throughput",
-      "description": "UPF Downstream Throughput",
+      "title": "UPF Downlink Throughput",
+      "description": "UPF Downlink Throughput",
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
