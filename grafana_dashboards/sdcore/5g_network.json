@@ -98,7 +98,7 @@
           },
           "editorMode": "builder",
           "exemplar": false,
-          "expr": "up{juju_charm=\"sdcore-upf\"}",
+          "expr": "up{juju_charm=\"sdcore-upf-k8s\"}",
           "format": "time_series",
           "instant": true,
           "legendFormat": "__auto",
@@ -503,34 +503,7 @@
             ]
           },
           "unit": "bps"
-        },
-        "overrides": [
-          {
-            "__systemRef": "hideSeriesFrom",
-            "matcher": {
-              "id": "byNames",
-              "options": {
-                "mode": "exclude",
-                "names": [
-                  "upf",
-                  "upf2"
-                ],
-                "prefix": "All except:",
-                "readOnly": true
-              }
-            },
-            "properties": [
-              {
-                "id": "custom.hideFrom",
-                "value": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": true
-                }
-              }
-            ]
-          }
-        ]
+        }
       },
       "options": {
         "legend": {
@@ -623,34 +596,7 @@
             ]
           },
           "unit": "bps"
-        },
-        "overrides": [
-          {
-            "__systemRef": "hideSeriesFrom",
-            "matcher": {
-              "id": "byNames",
-              "options": {
-                "mode": "exclude",
-                "names": [
-                  "upf",
-                  "upf2"
-                ],
-                "prefix": "All except:",
-                "readOnly": true
-              }
-            },
-            "properties": [
-              {
-                "id": "custom.hideFrom",
-                "value": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": true
-                }
-              }
-            ]
-          }
-        ]
+        }
       },
       "gridPos": {
         "h": 7,
