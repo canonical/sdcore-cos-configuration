@@ -24,7 +24,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 9,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -92,7 +91,7 @@
       },
       "gridPos": {
         "h": 7,
-        "w": 9,
+        "w": 8,
         "x": 0,
         "y": 0
       },
@@ -276,8 +275,8 @@
       },
       "gridPos": {
         "h": 7,
-        "w": 10,
-        "x": 9,
+        "w": 7,
+        "x": 8,
         "y": 0
       },
       "id": 14,
@@ -407,8 +406,8 @@
       },
       "gridPos": {
         "h": 7,
-        "w": 5,
-        "x": 19,
+        "w": 3,
+        "x": 15,
         "y": 0
       },
       "id": 4,
@@ -515,7 +514,7 @@
       },
       "gridPos": {
         "h": 7,
-        "w": 24,
+        "w": 18,
         "x": 0,
         "y": 7
       },
@@ -609,11 +608,11 @@
       },
       "gridPos": {
         "h": 7,
-        "w": 24,
+        "w": 18,
         "x": 0,
         "y": 14
       },
-      "id": 16,
+      "id": 15,
       "options": {
         "legend": {
           "calcs": [],
@@ -642,45 +641,6 @@
       ],
       "title": "UPF Downlink Throughput",
       "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "loki",
-        "uid": "${loki_datasource}"
-      },
-      "gridPos": {
-        "h": 17,
-        "w": 24,
-        "x": 0,
-        "y": 21
-      },
-      "id": 15,
-      "options": {
-        "dedupStrategy": "none",
-        "enableLogDetails": true,
-        "prettifyLogMessage": true,
-        "showCommonLabels": false,
-        "showLabels": true,
-        "showTime": true,
-        "sortOrder": "Descending",
-        "wrapLogMessage": true
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "loki",
-            "uid": "${loki_datasource}"
-          },
-          "editorMode": "builder",
-          "expr": "{charm=~\"$charm\"} |= ``",
-          "key": "Q-d753d77a-8c71-4fc1-9340-93fe869d0f34-0",
-          "maxLines": 1000,
-          "queryType": "range",
-          "refId": "A"
-        }
-      ],
-      "title": "Logs",
-      "type": "logs"
     }
   ],
   "refresh": "5s",
@@ -689,6 +649,24 @@
   "tags": [],
   "templating": {
     "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "hide": 0,
+        "includeAll": true,
+        "label": "Loki datasource",
+        "multi": true,
+        "name": "lokids",
+        "options": [],
+        "query": "loki",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
       {
         "current": {
           "selected": false,
@@ -724,50 +702,17 @@
         "regex": "",
         "skipUrlSync": false,
         "type": "datasource"
-      },
-      {
-        "current": {
-          "selected": true,
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
-        },
-        "datasource": {
-          "type": "loki",
-          "uid": "PF700A89E50E413C5"
-        },
-        "definition": "",
-        "hide": 0,
-        "includeAll": true,
-        "label": "Charm",
-        "multi": true,
-        "name": "charm",
-        "options": [],
-        "query": {
-          "label": "charm",
-          "refId": "LokiVariableQueryEditor-VariableQuery",
-          "stream": "",
-          "type": 1
-        },
-        "refresh": 2,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 1,
-        "type": "query"
       }
     ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
-  "title": "5G Network Overview + Logs",
-  "uid": "XpijtYd4a",
-  "version": 3,
+  "title": "5G Network Overview",
+  "uid": "XpijtYd4z",
+  "version": 1,
   "weekStart": ""
 }
