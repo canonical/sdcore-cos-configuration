@@ -684,6 +684,39 @@
         "regex": "",
         "skipUrlSync": false,
         "type": "datasource"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "sdcore-nms-k8s"
+          ],
+          "value": [
+            "sdcore-nms-k8s"
+          ]
+        },
+        "datasource": {
+          "type": "loki",
+          "uid": "$lokids"
+        },
+        "definition": "",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Charm",
+        "multi": true,
+        "name": "charm",
+        "options": [],
+        "query": {
+          "label": "charm",
+          "refId": "LokiVariableQueryEditor-VariableQuery",
+          "stream": "",
+          "type": 1
+        },
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
       }
     ]
   },
