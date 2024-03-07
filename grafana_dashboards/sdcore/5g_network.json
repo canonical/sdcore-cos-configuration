@@ -689,10 +689,10 @@
         "current": {
           "selected": true,
           "text": [
-            "sdcore-nms-k8s"
+            "All"
           ],
           "value": [
-            "sdcore-nms-k8s"
+            "$__all"
           ]
         },
         "datasource": {
