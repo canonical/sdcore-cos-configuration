@@ -21,4 +21,4 @@ jobs:
       - name: Install Grafana Dashboard Linter
         run: go install github.com/grafana/dashboard-linter@latest
       - name: Run Grafana Dashboard Lint
-        run: dashboard-linter lint grafana_dashboards/sdcore/5g_network.json
+        run: dashboard-linter lint grafana_dashboards/sdcore/5g_network.json --strict
