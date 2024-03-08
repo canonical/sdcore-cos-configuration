@@ -43,6 +43,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "unit": "none",
           "custom": {
             "align": "auto",
             "displayMode": "auto",
