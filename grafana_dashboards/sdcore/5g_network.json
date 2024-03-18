@@ -1,5 +1,4 @@
 {
-  "title": "5G Network Overview",
   "annotations": {
     "list": [
       {
@@ -25,19 +24,16 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
+  "id": 13,
   "links": [],
   "liveNow": false,
   "panels": [
     {
-      "id": 2,
-      "title": "UPF Status",
-      "description": "UPF Status",
-      "type": "table",
-      "maxDataPoints": 1,
       "datasource": {
         "type": "prometheus",
         "uid": "${prometheus_datasource}"
       },
+      "description": "UPF Status",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -46,7 +42,9 @@
           "unit": "none",
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "mappings": [
@@ -84,13 +82,37 @@
             },
             "properties": [
               {
-                "id": "custom.displayMode",
-                "value": "color-text"
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
               }
             ]
           }
         ]
       },
+      "gridPos": {
+        "h": 7,
+        "w": 10,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "maxDataPoints": 1,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "9.5.3",
       "targets": [
         {
           "datasource": {
@@ -107,6 +129,7 @@
           "refId": "A"
         }
       ],
+      "title": "UPF Status",
       "transformations": [
         {
           "id": "labelsToFields",
@@ -162,34 +185,14 @@
           }
         }
       ],
-      "options": {
-        "footer": {
-          "enablePagination": true,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": true
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 8,
-        "x": 0,
-        "y": 0
-      },
-      "pluginVersion": "9.2.1"
+      "type": "table"
     },
     {
-      "id": 14,
-      "title": "5G Core subscribers",
-      "description": "5G Core subscribers",
-      "type": "table",
       "datasource": {
         "type": "prometheus",
         "uid": "${prometheus_datasource}"
       },
+      "description": "5G Core subscribers",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -197,7 +200,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -270,6 +275,27 @@
           }
         ]
       },
+      "gridPos": {
+        "h": 7,
+        "w": 10,
+        "x": 10,
+        "y": 0
+      },
+      "id": 14,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "9.5.3",
       "targets": [
         {
           "datasource": {
@@ -283,6 +309,7 @@
           "refId": "A"
         }
       ],
+      "title": "5G Core subscribers",
       "transformations": [
         {
           "id": "labelsToFields",
@@ -350,34 +377,14 @@
           }
         }
       ],
-      "options": {
-        "footer": {
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": true,
-        "sortBy": []
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 7,
-        "x": 8,
-        "y": 0
-      },
-      "pluginVersion": "9.2.1"
+      "type": "table"
     },
     {
-      "id": 4,
-      "title": "5G Active PDU Sessions",
-      "description": "5G Active PDU Sessions",
-      "type": "stat",
       "datasource": {
         "type": "prometheus",
         "uid": "${prometheus_datasource}"
       },
+      "description": "5G Active PDU Sessions",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -399,29 +406,13 @@
         },
         "overrides": []
       },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${prometheus_datasource}"
-          },
-          "editorMode": "builder",
-          "expr": "smf_pdu_sessions",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "transformations": [
-        {
-          "id": "reduce",
-          "options": {
-            "reducers": [
-              "last"
-            ]
-          }
-        }
-      ],
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 20,
+        "y": 0
+      },
+      "id": 4,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -437,23 +428,39 @@
         "text": {},
         "textMode": "auto"
       },
-      "gridPos": {
-        "h": 7,
-        "w": 3,
-        "x": 15,
-        "y": 0
-      },
-      "pluginVersion": "9.2.1"
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${prometheus_datasource}"
+          },
+          "editorMode": "builder",
+          "expr": "smf_pdu_sessions",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "5G Active PDU Sessions",
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {
+            "reducers": [
+              "last"
+            ]
+          }
+        }
+      ],
+      "type": "stat"
     },
     {
-      "id": 6,
-      "title": "UPF Uplink Throughput",
-      "description": "UPF Uplink Throughput",
-      "type": "timeseries",
       "datasource": {
         "type": "prometheus",
         "uid": "${prometheus_datasource}"
       },
+      "description": "UPF Uplink Throughput",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -504,8 +511,16 @@
             ]
           },
           "unit": "bps"
-        }
+        },
+        "overrides": []
       },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 6,
       "options": {
         "legend": {
           "calcs": [],
@@ -531,22 +546,15 @@
           "refId": "A"
         }
       ],
-      "gridPos": {
-        "h": 7,
-        "w": 18,
-        "x": 0,
-        "y": 8
-      }
+      "title": "UPF Uplink Throughput",
+      "type": "timeseries"
     },
     {
-      "id": 4,
-      "title": "UPF Downlink Throughput",
-      "description": "UPF Downlink Throughput",
-      "type": "timeseries",
       "datasource": {
         "type": "prometheus",
         "uid": "${prometheus_datasource}"
       },
+      "description": "UPF Downlink Throughput",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -597,14 +605,16 @@
             ]
           },
           "unit": "bps"
-        }
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 7,
-        "w": 18,
+        "w": 24,
         "x": 0,
-        "y": 15
+        "y": 14
       },
+      "id": 15,
       "options": {
         "legend": {
           "calcs": [],
@@ -630,11 +640,50 @@
           "range": true,
           "refId": "A"
         }
-      ]
+      ],
+      "title": "UPF Downlink Throughput",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "$loki_datasource"
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 24,
+        "x": 0,
+        "y": 21
+      },
+      "id": 16,
+      "options": {
+        "dedupStrategy": "none",
+        "enableLogDetails": true,
+        "prettifyLogMessage": true,
+        "showCommonLabels": false,
+        "showLabels": true,
+        "showTime": true,
+        "sortOrder": "Descending",
+        "wrapLogMessage": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "$loki_datasource"
+          },
+          "editorMode": "builder",
+          "expr": "{charm=~\"$charm\"} |= ``",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Logs",
+      "type": "logs"
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 37,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -645,9 +694,9 @@
           "text": "All",
           "value": "$__all"
         },
-        "hide": 1,
+        "hide": 0,
         "includeAll": true,
-        "label": "Loki data source",
+        "label": "Loki datasource",
         "multi": true,
         "name": "loki_datasource",
         "options": [],
@@ -663,9 +712,9 @@
           "text": "All",
           "value": "$__all"
         },
-        "hide": 1,
+        "hide": 0,
         "includeAll": true,
-        "label": "Prometheus data source",
+        "label": "Prometheus datasource",
         "multi": true,
         "name": "prometheus_datasource",
         "options": [],
@@ -674,15 +723,49 @@
         "regex": "",
         "skipUrlSync": false,
         "type": "datasource"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "loki",
+          "uid": "$loki_datasource"
+        },
+        "definition": "",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Charm",
+        "multi": true,
+        "name": "charm",
+        "options": [],
+        "query": {
+          "label": "charm",
+          "refId": "LokiVariableQueryEditor-VariableQuery",
+          "stream": "",
+          "type": 1
+        },
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
       }
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
+  "title": "5G Network Overview",
   "uid": "XpijtYd4z",
   "version": 1,
   "weekStart": ""
