@@ -31,7 +31,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheusds}"
+        "uid": "${prometheus_datasource}"
       },
       "description": "UPF Status",
       "fieldConfig": {
@@ -189,7 +189,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheusds}"
+        "uid": "${prometheus_datasource}"
       },
       "description": "5G Core subscribers",
       "fieldConfig": {
@@ -381,7 +381,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheusds}"
+        "uid": "${prometheus_datasource}"
       },
       "description": "5G Active PDU Sessions",
       "fieldConfig": {
@@ -457,7 +457,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheusds}"
+        "uid": "${prometheus_datasource}"
       },
       "description": "UPF Uplink Throughput",
       "fieldConfig": {
@@ -551,7 +551,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheusds}"
+        "uid": "${prometheus_datasource}"
       },
       "description": "UPF Downlink Throughput",
       "fieldConfig": {
@@ -646,7 +646,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "$lokids"
+        "uid": "$loki_datasource"
       },
       "gridPos": {
         "h": 17,
@@ -669,7 +669,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "$lokids"
+            "uid": "$loki_datasource"
           },
           "editorMode": "builder",
           "expr": "{charm=~\"$charm\"} |= ``",
@@ -697,7 +697,7 @@
         "includeAll": true,
         "label": "Loki datasource",
         "multi": true,
-        "name": "lokids",
+        "name": "loki_datasource",
         "options": [],
         "query": "loki",
         "refresh": 1,
@@ -715,7 +715,7 @@
         "includeAll": true,
         "label": "Prometheus datasource",
         "multi": true,
-        "name": "prometheusds",
+        "name": "prometheus_datasource",
         "options": [],
         "query": "prometheus",
         "refresh": 1,
@@ -735,7 +735,7 @@
         },
         "datasource": {
           "type": "loki",
-          "uid": "$lokids"
+          "uid": "$loki_datasource"
         },
         "definition": "",
         "hide": 0,
