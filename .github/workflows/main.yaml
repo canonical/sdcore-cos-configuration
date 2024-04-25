@@ -3,10 +3,8 @@ name: Main branch CI
 on:
   pull_request:
     branches:
-      - main
+      - v1.4
   push:
-    branches:
-      - main
 
 jobs:
   lint-report:

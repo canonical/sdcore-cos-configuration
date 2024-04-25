@@ -1,8 +1,9 @@
 version: 2
 updates:
   - package-ecosystem: "github-actions"
+    target-branch: v1.4
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     commit-message:
       prefix: "chore: "
