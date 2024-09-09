@@ -1,4 +1,5 @@
 {
+  "title": "5G Network Logs",
   "annotations": {
     "list": [
       {
@@ -24,14 +25,14 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 62,
+  "id": 81,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "datasource": {
         "type": "loki",
-        "uid": "$loki_datasource"
+        "uid": "${loki_datasource}"
       },
       "gridPos": {
         "h": 17,
@@ -54,7 +55,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "$loki_datasource"
+            "uid": "${loki_datasource}"
           },
           "editorMode": "builder",
           "expr": "{charm=~\"$charm\"} |= ``",
@@ -78,14 +79,13 @@
           "text": "All",
           "value": "$__all"
         },
-        "hide": 0,
+        "hide": 1,
         "includeAll": true,
-        "label": "Loki datasource",
+        "label": "Loki data source",
         "multi": true,
         "name": "loki_datasource",
         "options": [],
         "query": "loki",
-        "queryValue": "",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -103,7 +103,7 @@
         },
         "datasource": {
           "type": "loki",
-          "uid": "$loki_datasource"
+          "uid": "${loki_datasource}"
         },
         "definition": "",
         "hide": 0,
@@ -132,8 +132,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "5G Network Logs",
-  "uid": "Er4Ks25df",
+  "uid": "Er4Ks25df2",
   "version": 1,
   "weekStart": ""
 }
