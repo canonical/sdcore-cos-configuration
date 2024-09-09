@@ -1,5 +1,5 @@
 {
-  "title": "5G Network Logs Test",
+  "title": "5G Network Logs",
   "annotations": {
     "list": [
       {
@@ -19,6 +19,24 @@
           "type": "dashboard"
         },
         "type": "dashboard"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "hide": 1,
+        "includeAll": true,
+        "label": "Prometheus data source",
+        "multi": true,
+        "name": "prometheus_datasource",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
       }
     ]
   },
@@ -132,7 +150,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "uid": "Er4Ks25df9",
+  "uid": "Er4Ks25df2",
   "version": 1,
   "weekStart": ""
 }
